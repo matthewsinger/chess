@@ -37,10 +37,6 @@ public class Board {
     return new Board(pieces.stream().filter(p -> !p.equals(piece)).collect(Collectors.toList()));
   }
   
-  public Board removePiece(Color color, Posn p) {
-    return new Board(pieces.stream().filter(piece -> !piece.matches(color, p)).collect(Collectors.toList()));
-  }
-  
   public List<Piece> allPieces() {
     return pieces;
   }
@@ -97,9 +93,9 @@ public class Board {
       left = p2;
       right = p1;
     }
-    Delta goLeft = new Delta(1, 0);
+    Delta goRight = new Delta(1, 0);
     while (!left.equals(right)) {
-      left = left.plus(goLeft);
+      left = left.plus(goRight);
       if (this.anyPieceOn(left)) {
         return false;
       }
